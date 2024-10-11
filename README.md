@@ -55,6 +55,12 @@ mvn test
 
 Los diagramas de arquitectura, clases y secuencia se encuentran en la carpeta `docs/diagrams`.
 
+##Pruebas Unitarias exitosas:
+
+Aquí las pruebas unitaruas exitosas del proyecto:
+
+
+
 ## Contribuir
 
 Si deseas contribuir al proyecto, por favor crea un fork y envía un pull request con tus cambios.
