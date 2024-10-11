@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,10 +21,10 @@ public class Event implements Serializable {
     private Long id;
     private String name;
 
-    @OneToOne
-    private Chair chair;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Chair chair;;
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Investigator> programCommittee = new HashSet<>();
 
     public Long getId() {

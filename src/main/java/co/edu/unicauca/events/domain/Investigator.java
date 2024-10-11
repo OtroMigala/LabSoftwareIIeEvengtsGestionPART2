@@ -14,6 +14,16 @@ public class Investigator {
     private Long id;
     private String name;
 
+    public Investigator() {
+    }
+
+    public Investigator(String name) {
+
+        this.name = name;
+
+    }
+
+
     // Getters y setters
 
     public Long getId() {

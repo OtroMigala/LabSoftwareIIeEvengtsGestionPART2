@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,18 +30,45 @@ class EventServiceTest {
     private EventService eventService;
 
     @Test
-    void testGetProgramCommitteeByEventId() {
+    void testFindById() {
+        // Arrange
+        Long eventId = 1L;
         Event event = new Event();
-        event.setId(1L);
+        event.setId(eventId);
+        event.setName("Conferencia de IA 2025");
+        
+        when(eventRepository.findById(eventId)).thenReturn(Optional.of(event));
+
+        // Act
+        Event result = eventService.findById(eventId);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(eventId, result.getId());
+        assertEquals("Conferencia de IA 2025", result.getName());
+        verify(eventRepository).findById(eventId);
+    }
+
+    @Test
+    void testGetProgramCommitteeByEventId() {
+        // Arrange
+        Long eventId = 1L;
+        Event event = new Event();
+        event.setId(eventId);
         Set<Investigator> committee = new HashSet<>();
-        committee.add(new Investigator());
+        committee.add(new Investigator("Dra. Ada Lovelace"));
+        committee.add(new Investigator("Dr. John von Neumann"));
         event.setProgramCommittee(committee);
 
-        when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
+        when(eventRepository.findById(eventId)).thenReturn(Optional.of(event));
 
-        Set<Investigator> result = eventService.getProgramCommitteeByEventId(1L);
+        // Act
+        Set<Investigator> result = eventService.getProgramCommitteeByEventId(eventId);
 
-        assertEquals(1, result.size());
-        verify(eventRepository).findById(1L);
+        // Assert
+        assertEquals(2, result.size());
+        assertTrue(result.stream().anyMatch(i -> i.getName().equals("Dra. Ada Lovelace")));
+        assertTrue(result.stream().anyMatch(i -> i.getName().equals("Dr. John von Neumann")));
+        verify(eventRepository).findById(eventId);
     }
 }

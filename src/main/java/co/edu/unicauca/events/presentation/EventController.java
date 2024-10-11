@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,11 +29,11 @@ public class EventController {
     public List<Event> findAll() { 
         return eventService.findAll(); 
     }
-
     @PostMapping
-    public Event create(@RequestBody Event event) { 
-        return eventService.create(event); 
-    } 
+    public ResponseEntity<Event> createEvent(@RequestBody Event event) {
+        Event createdEvent = eventService.create(event);
+        return ResponseEntity.ok(createdEvent);
+    }
 
     @GetMapping("/{id}") 
     public Event getEventById(@PathVariable Long id) { 
