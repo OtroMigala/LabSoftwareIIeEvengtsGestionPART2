@@ -78,5 +78,7 @@ public class EventService implements IEventService {
         Event event = findById(eventId);
         return event != null ? event.getProgramCommittee() : Collections.emptySet();
     }
+
+    
     
 }

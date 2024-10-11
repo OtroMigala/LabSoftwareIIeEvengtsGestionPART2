@@ -43,4 +43,5 @@ public class EventController {
     public Set<Investigator> getProgramCommittee(@PathVariable Long id) {
         return eventService.getProgramCommitteeByEventId(id);
     }
+    
 }
