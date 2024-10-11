@@ -16,7 +16,7 @@ Este proyecto es una API REST para gestionar eventos académicos, incluyendo la 
    
 3. Navegar al directorio del proyecto:
    
-  cd eventos-academicos
+  cd events
 
 3. Compilar el proyecto:
    
