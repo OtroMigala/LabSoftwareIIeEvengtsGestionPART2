@@ -12,7 +12,7 @@ Este proyecto es una API REST para gestionar eventos académicos, incluyendo la 
 
 1. Clonar el repositorio:
 
-   git clone https://github.com/tu-usuario/eventos-academicos.git
+   git clone [https://github.com/OtroMigala/LabSoftwareIIeEvengtsGestionPART2](https://github.com/OtroMigala/LabSoftwareIIeEvengtsGestionPART2)
    
 3. Navegar al directorio del proyecto:
    
