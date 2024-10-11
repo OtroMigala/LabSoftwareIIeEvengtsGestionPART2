@@ -34,7 +34,10 @@ public class EventService implements IEventService {
 
     @Override
     public Event findById(Long id) {
+        // Mensaje a EventRepository: Llamada al método findById
         Optional<Event> eventOptional = eventRepository.findById(id);
+        
+        // Devolución del objeto Event o null
         return eventOptional.orElse(null);
     }
 
@@ -75,7 +78,10 @@ public class EventService implements IEventService {
 
     @Override
     public Set<Investigator> getProgramCommitteeByEventId(Long eventId) {
+        // Mensaje a EventService: Llamada al método findById
         Event event = findById(eventId);
+        
+        // Mensaje a Event: Llamada al método getProgramCommittee
         return event != null ? event.getProgramCommittee() : Collections.emptySet();
     }
 
