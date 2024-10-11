@@ -39,7 +39,7 @@ public class EventController {
     public Event getEventById(@PathVariable Long id) { 
         return eventService.findById(id); 
     }
-        @GetMapping("/{id}/committee")
+    @GetMapping("/{id}/committee")
     public Set<Investigator> getProgramCommittee(@PathVariable Long id) {
         return eventService.getProgramCommitteeByEventId(id);
     }
